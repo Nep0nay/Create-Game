@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class LobbyUI : UIBase
 {
-
     private Button _button;
 
     void Start()

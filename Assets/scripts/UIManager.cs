@@ -30,6 +30,30 @@ public class UIManager : MonoSingletone<UIManager>
         _container.Add(typeof(LobbyUI).ToString(), comp); //_container에 LobbyUI추가
     }
 
+    public void CreateSelectbuttonUI()
+    {
+        GameObject SBUI = Resources.Load<GameObject>("Prefab/Selectbutton");
+        GameObject SBGO = Instantiate(SBUI, _canvasTrasn, false);
+        Selectbutton comp1 = SBGO.GetComponent<Selectbutton> ();
+
+        _container.Add(typeof(Selectbutton).ToString(), comp1); //_container에 Selectbutton추가
+
+    }
+    public void CreateStageUI()
+    {
+        GameObject StageUI = Resources.Load<GameObject>("Prefab/StageUI");
+        GameObject StageGO = Instantiate(StageUI, _canvasTrasn, false);
+        StageUI comp2 = StageGO.GetComponent<StageUI>();
+
+        _container.Add(typeof(StageUI).ToString(), comp2); //_container에 StageUI추가
+
+    }
+
+    public void RemoveSelectbuttonUI()
+    {
+        RemoveContainerUI("Selectbutton");
+    }
+
     public void RemoveContainerUI(string uiName) //_container에 있는 LobbyUI삭제 -> 씬 전환할때
     {
         UIBase lobbyui;
@@ -39,6 +63,6 @@ public class UIManager : MonoSingletone<UIManager>
             _container.Remove(typeof(LobbyUI).ToString());
         }
     }
-
+    
 
 }
