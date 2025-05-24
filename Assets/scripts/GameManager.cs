@@ -21,7 +21,7 @@ public class GameManager : MonoSingletone<GameManager>
 
     public void OnClickStartButton()
     {
-        StartCoroutine(LoadSceneAsync("StartScene"));
+        StartCoroutine(LoadStartScene("StartScene"));
     }
 
     public void OnClickSelectButton()
@@ -30,17 +30,29 @@ public class GameManager : MonoSingletone<GameManager>
         UIManager.Instance.RemoveSelectbuttonUI();
     }
 
-    private IEnumerator LoadSceneAsync(string sceneName)
+    public void OnFirstStageButton()
+    {
+        StartCoroutine(LoadFirstStageScene("GameScene"));
+    }
+
+    private IEnumerator LoadStartScene(string sceneName)
     {
         yield return SceneManager.LoadSceneAsync(sceneName);
 
         Debug.Log("RemoveContainerUI");
-        UIManager.Instance.RemoveContainerUI("LobbyUI"); // 씬 전환하고 LobbyUI삭제
+        UIManager.Instance.RemoveLobbyUI("LobbyUI"); // 씬 전환하고 LobbyUI삭제
 
-        // 씬 로딩 이후 바로 Selectbutton UI 생성
+        // 씬 전환 이후 바로 Selectbutton UI 생성
         UIManager.Instance.CreateSelectbuttonUI();
     }
   
+    private IEnumerator LoadFirstStageScene(string sceneName)
+    {
+        yield return SceneManager.LoadSceneAsync(sceneName);
+
+        UIManager.Instance.RemoveFirstStageUI("StageUI");
+
+    }
 
 
 }

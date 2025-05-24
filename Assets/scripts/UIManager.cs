@@ -35,6 +35,7 @@ public class UIManager : MonoSingletone<UIManager>
         GameObject SBUI = Resources.Load<GameObject>("Prefab/Selectbutton");
         GameObject SBGO = Instantiate(SBUI, _canvasTrasn, false);
         Selectbutton comp1 = SBGO.GetComponent<Selectbutton> ();
+        SBGO.transform.position = new Vector3(0, -450f, 0);
 
         _container.Add(typeof(Selectbutton).ToString(), comp1); //_container에 Selectbutton추가
 
@@ -51,10 +52,10 @@ public class UIManager : MonoSingletone<UIManager>
 
     public void RemoveSelectbuttonUI()
     {
-        RemoveContainerUI("Selectbutton");
+        RemoveSBUI("Selectbutton");
     }
 
-    public void RemoveContainerUI(string uiName) //_container에 있는 LobbyUI삭제 -> 씬 전환할때
+    public void RemoveLobbyUI(string uiName) //_container에 있는 LobbyUI삭제 -> 씬 전환할때
     {
         UIBase lobbyui;
         if (_container.TryGetValue(typeof(LobbyUI).ToString(), out lobbyui))
@@ -63,6 +64,23 @@ public class UIManager : MonoSingletone<UIManager>
             _container.Remove(typeof(LobbyUI).ToString());
         }
     }
-    
+    public void RemoveSBUI(string uiName) //_container에 있는 Selectbutton삭제 -> 버튼을 눌렀을때
+    {
+        UIBase sbui;
+        if (_container.TryGetValue(typeof(Selectbutton).ToString(), out sbui))
+        {
+            Destroy(sbui.gameObject);
+            _container.Remove(typeof(Selectbutton).ToString());
+        }
+    }
+    public void RemoveFirstStageUI(string uiName) //_container에 있는 LobbyUI삭제 -> 씬 전환할때
+    {
+        UIBase stageui;
+        if (_container.TryGetValue(typeof(StageUI).ToString(), out stageui))
+        {
+            Destroy(stageui.gameObject);
+            _container.Remove(typeof(StageUI).ToString());
+        }
+    }
 
 }
