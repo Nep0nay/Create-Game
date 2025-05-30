@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class enemyHealthBar : UIManager
+public class enemyHealthBar : UIBase
 {
     [SerializeField]
     private Image _enemyhp;

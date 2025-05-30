@@ -49,6 +49,30 @@ public class UIManager : MonoSingletone<UIManager>
         _container.Add(typeof(StageUI).ToString(), comp2); //_container에 StageUI추가
     }
 
+    public void CreateArmyHealthbar()
+    {
+        GameObject armyhp = Resources.Load<GameObject>("Prefab/armyHealthbar");
+        GameObject armyhpGO = Instantiate(armyhp, _canvasTrasn, false);
+        armyHealthbar comp3 = armyhpGO.GetComponent<armyHealthbar>();
+
+        _container.Add(typeof(armyHealthbar).ToString(), comp3); //_container에 armyHealthbar추가
+    }
+    public void CreateEnemyHealthbar()
+    {
+        GameObject enemyhp = Resources.Load<GameObject>("Prefab/enemyHealthbar");
+        GameObject enemyhpGO = Instantiate(enemyhp, _canvasTrasn, false);
+        enemyHealthBar comp4 = enemyhpGO.GetComponent<enemyHealthBar>();
+
+        _container.Add(typeof(enemyHealthBar).ToString(), comp4); //_container에 enmeyHealthbar추가
+    }
+    public void CreateTimer()
+    {
+        GameObject timer = Resources.Load<GameObject>("Prefab/Timer");
+        GameObject timerGO = Instantiate(timer, _canvasTrasn, false);
+        Timer comp5 = timerGO.GetComponent<Timer>();
+
+        _container.Add(typeof(Timer).ToString(), comp5); //_container에 Timer추가
+    }
 
     public void RemoveSelectbuttonUI()
     {

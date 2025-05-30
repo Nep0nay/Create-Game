@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5316046413323435984}
   - component: {fileID: 6546213864267462028}
   m_Layer: 0
-  m_Name: army Healthbar
+  m_Name: armyHealthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 5316046413323435999}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 595, y: 500, z: 0}
+  m_LocalPosition: {x: -595, y: 500, z: 0}
   m_LocalScale: {x: 700, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -33,6 +33,10 @@ public class GameManager : MonoSingletone<GameManager>
     public void OnFirstStageButton()
     {
         StartCoroutine(LoadFirstStageScene("GameScene"));
+
+        UIManager.Instance.CreateArmyHealthbar();
+        UIManager.Instance.CreateEnemyHealthbar();
+        UIManager.Instance.CreateTimer();
     }
 
     private IEnumerator LoadStartScene(string sceneName)
@@ -54,5 +58,6 @@ public class GameManager : MonoSingletone<GameManager>
 
     }
 
+    
 
 }
