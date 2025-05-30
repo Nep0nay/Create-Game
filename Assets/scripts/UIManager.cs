@@ -47,8 +47,8 @@ public class UIManager : MonoSingletone<UIManager>
         StageUI comp2 = StageGO.GetComponent<StageUI>();
 
         _container.Add(typeof(StageUI).ToString(), comp2); //_container¿¡ StageUIÃß°¡
-
     }
+
 
     public void RemoveSelectbuttonUI()
     {

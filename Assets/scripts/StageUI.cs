@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class StageUI : UIBase
 {
+    [SerializeField]
     private Button _button;
     void Start()
     {
