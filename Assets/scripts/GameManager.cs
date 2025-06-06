@@ -32,11 +32,13 @@ public class GameManager : MonoSingletone<GameManager>
 
     public void OnFirstStageButton()
     {
-        StartCoroutine(LoadFirstStageScene("GameScene"));
+        StartCoroutine(LoadGameScene("GameScene"));
 
         UIManager.Instance.CreateArmyHealthbar();
         UIManager.Instance.CreateEnemyHealthbar();
         UIManager.Instance.CreateTimer();
+
+        
     }
 
     private IEnumerator LoadStartScene(string sceneName)
@@ -50,14 +52,15 @@ public class GameManager : MonoSingletone<GameManager>
         UIManager.Instance.CreateSelectbuttonUI();
     }
   
-    private IEnumerator LoadFirstStageScene(string sceneName)
+    private IEnumerator LoadGameScene(string sceneName)
     {
         yield return SceneManager.LoadSceneAsync(sceneName);
 
         UIManager.Instance.RemoveFirstStageUI("StageUI");
+        
 
     }
 
-    
+   
 
 }

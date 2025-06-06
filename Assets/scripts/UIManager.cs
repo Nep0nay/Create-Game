@@ -74,6 +74,8 @@ public class UIManager : MonoSingletone<UIManager>
         _container.Add(typeof(Timer).ToString(), comp5); //_containerø° Timer√ﬂ∞°
     }
 
+    
+
     public void RemoveSelectbuttonUI()
     {
         RemoveSBUI("Selectbutton");
