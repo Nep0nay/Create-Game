@@ -54,7 +54,8 @@ public class armyMove : MonoBehaviour
                 {
                     _animator.Play("armyAttack");
                 }
-                _currentState = ARMYSTATE.WALK;
+                _currentState = ARMYSTATE.IDLE;
+
 
                 break;
         }
