@@ -1,45 +1,66 @@
+using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class enemyAnimator : UIBase
+public enum ENMEYSTATE { IDLE, WALK, ATTACK }
+
+public class enemyAnimator : MonoBehaviour
 {
     [SerializeField]
     private Animator _animator;
 
     [SerializeField]
-    private GameObject _target;
-    
+    private Transform _target;
+   
+    private ENMEYSTATE _currentState;
+
     private float _Speed = 5f;
-    private bool _isMoving = false;
-    private bool _isPlaying = false;
 
     void Start()
     {
-        _animator.Play("Idle");
+        _currentState = ENMEYSTATE.IDLE;
+
     }
+
+    public void TargetTransform(Transform target)
+    {
+        _target = target;
+    }
+
 
     void Update()
     {
-        var aniState = _animator.GetCurrentAnimatorStateInfo(0);
+        if (_target == null)
+            return;
 
-        if(aniState.normalizedTime >= 1)
+        switch (_currentState)
         {
-            _isPlaying = false;
-        }
+            case ENMEYSTATE.IDLE:
+                _animator.Play("enemyIdle");
+                var dis = Vector3.Distance(_target.transform.position, transform.position);
 
-        float distance = Vector3.Distance(_target.transform.position, transform.position);
+                if (dis <= 6f)
+                {
+                    _currentState = ENMEYSTATE.WALK;
+                }
 
-        if(distance <= 5f)
-        {
-            _isMoving = true;
-            _animator.Play("Walk");
+                break;
+            case ENMEYSTATE.WALK:
+                var dis1 = Vector3.Distance(_target.transform.position, transform.position);
+                transform.position += Vector3.right * Time.deltaTime * _Speed;
+                _animator.Play("enemyWalk");
 
+                if(dis1 <= 1f)
+                {
+                    _currentState = ENMEYSTATE.ATTACK;
+                }
 
-        }
-        else if(distance >= 5f)
-        {
-            _animator.Play("Idle");
-            _isMoving = true; 
+                break;
+            case ENMEYSTATE.ATTACK:
+                _animator.Play("enemyAttack");
+
+                break;
         }
 
     }

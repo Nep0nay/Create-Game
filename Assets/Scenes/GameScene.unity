@@ -714,7 +714,7 @@ GameObject:
   - component: {fileID: 851618210}
   - component: {fileID: 851618209}
   m_Layer: 0
-  m_Name: AgentController
+  m_Name: SpawnChar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

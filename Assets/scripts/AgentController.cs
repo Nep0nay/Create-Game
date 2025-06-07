@@ -8,20 +8,26 @@ public class AgentController : MonoBehaviour
     [SerializeField]
     GameObject EnemyAgentPrefab;
 
+
    
     void Start()
     {
-        SpawnStageAgent();
+        SpawnObjects();
     }
 
-    private void SpawnStageAgent()
+    public void SpawnObjects()
     {
         GameObject player = Instantiate(PlayerAgentPrefab);
-        GameObject enemyGO = Instantiate(EnemyAgentPrefab);
+        GameObject enmey = Instantiate(EnemyAgentPrefab);
 
-        enemy comp = enemyGO.gameObject.GetComponent<enemy>();
+        enemyAnimator enmeyGO = enmey.GetComponent<enemyAnimator>();
 
-        comp.SetTarget(player.transform);
+        //Transform GO = PlayerAgentPrefab.transform;
+        //enemyAnimator comp = player.gameObject.GetComponent<enemyAnimator>();
+        enmeyGO.TargetTransform(player.transform);
+
+
+
 
     }
 }
